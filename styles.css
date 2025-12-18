@@ -66,15 +66,6 @@ textarea[readonly] {
   background-color: #fafafa;
 }
 
-/* Info box inside login panel */
-.history-box {
-  margin-top: 0.75em;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  text-align: justify;
-}
-
 /* Chat application --------------------------------------------------------- */
 .chat-app[aria-hidden="true"] {
   opacity: 0.15;
