@@ -1,99 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Demo del proyecto "Tía Selma"</title>
-
+ 
   <!-- Fuente Montserrat -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+ 
   <!-- Hoja de estilos unificada -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Hola mijo</h1>
-
-  <!-- App del chatbot -->
-  <main id="chatApp" class="chat-app" aria-hidden="true">
-    <p>Pida lo que quiera y tía Selma resuelve. 👵🏻</p>
-
+ 
+  <!-- App del chatbot (sin modal) -->
+  <main id="chatApp" class="chat-app">
+    <p>Pida lo que quiera y tía Selma resuelve.</p>
+ 
     <textarea
       id="userInput"
       rows="4"
-      placeholder="¿Qué le sirvo? 🍲"
+      placeholder="¿Qué le sirvo?"
       autocomplete="off"
       autocapitalize="none"
       spellcheck="false"
     ></textarea>
-    <button id="sendBtn">Enviar</button>
-
+    <button id="sendBtn" type="button">Enviar</button>
+ 
     <textarea
       id="currentResponse"
       rows="4"
       readonly
-      placeholder="veamos si lo puedo ayudar 🧶"
+      placeholder="Veamos si lo puedo ayudar..."
     ></textarea>
-
-    <h3>Si la memoria no me falla 💭</h3>
+ 
+    <h3>Si la memoria no me falla</h3>
     <button id="toggleHistoryBtn" type="button">Mostrar/ocultar historial</button>
-    <textarea id="historyBox" rows="8" readonly placeholder="Sabe qué mijo... búsquelo usté mismo"></textarea>
+    <textarea
+      id="historyBox"
+      rows="8"
+      readonly
+      placeholder="Sabe qué mijo... búsquelo usté mismo"
+    ></textarea>
   </main>
-
-  <script type="module" src="main.js?v=4"></script>
-  
-function getPreferredEndpoint() {
-  const params = new URLSearchParams(window.location.search);
-  const env = (params.get("env") || params.get("mode") || "").toLowerCase();
-  const baseUrl = env === "test" 
-    ? "https://alvarovargas.app.n8n.cloud/webhook-test/ac234336-390d-438a-aad6-284a5290743d/chat"
-    : "https://alvarovargas.app.n8n.cloud/webhook/ac234336-390d-438a-aad6-284a5290743d/chat";
-  return baseUrl;
-}
-    
-async function handleAccept() {
-  const name = document.getElementById('loginName').value.trim();
-  const email = document.getElementById('loginEmail').value.trim();
-
-  if (!name || !email) {
-    alert('Por favor completa ambos campos antes de continuar.');
-    return;
-  }
-
-  if (!nameRegex.test(name)) {
-    alert('Ingresa un nombre válido (solo letras; se permiten espacios, guiones o apóstrofes).');
-    return;
-  }
-
-  if (!emailRegex.test(email)) {
-    alert('Ingresa un correo válido con formato: a@bb.cc (se permite subdominio: a@bb.sld.cc).');
-    return;
-  }
-
-// Always start a NEW session when the user accepts (switch user = new identity)
-const sessionId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-localStorage.setItem('sessionId', sessionId);
  
-// Save identity locally (so n8n + future messages can include it)
-localStorage.setItem('userName', name);
-localStorage.setItem('userEmail', email);
- 
-// Clear old conversation so you don't “inherit” the first user's history
-localStorage.removeItem('chatHistory');
-
-
-  overlay.setAttribute('hidden', '');
-  chatApp.removeAttribute('aria-hidden');
-}
-
-  acceptBtn.addEventListener('click', handleAccept);
-  });
-
-  backBtn.addEventListener('click', () => {
-    window.location.href = TiaSelma/index.html';
-  });
-</script>
+  <script type="module" src="main.js?v=1"></script>
 </body>
 </html>
