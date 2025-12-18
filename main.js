@@ -20,15 +20,6 @@ function getPreferredEndpoint() {
   return url.toString();
 }
  
-function getOrCreateSessionId() {
-  let sessionId = localStorage.getItem("sessionId");
-  if (!sessionId) {
-    sessionId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-    localStorage.setItem("sessionId", sessionId);
-  }
-  return sessionId;
-}
- 
 async function postJson(url, payload, timeoutMs = 45000) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
@@ -64,7 +55,7 @@ function extractReply({ raw, data }) {
     data?.reply ||
     data?.message ||
     data?.text ||
-    "No se recibió respuesta."
+    "Piense bien lo que me va a decir"
   );
 }
  
@@ -97,7 +88,7 @@ async function sendMessage() {
     }
  
     const reply = extractReply({ raw, data });
-    const updatedHistory = `${previous}\n👤 Tú: ${input}\n👵🏻 Tía Selma: ${reply}\n`;
+    const updatedHistory = `${previous}\n👨🏻‍💻 Tú: ${input}\n👵🏻 Tía Selma: ${reply}\n`;
  
     currentResponse.value = reply;
     historyBox.value = updatedHistory;
@@ -106,7 +97,7 @@ async function sendMessage() {
     const msg = String(err?.message || err || "Error desconocido");
     const fallback = `Ahí si que me pilló 🤔 (${msg})`;
  
-    const updatedHistory = `${previous}\n👤 Tú: ${input}\n👵🏻 Tía Selma: ${fallback}\n`;
+    const updatedHistory = `${previous}\n👨🏻‍💻 Tú: ${input}\n👵🏻 Tía Selma: ${fallback}\n`;
     currentResponse.value = fallback;
     historyBox.value = updatedHistory;
     localStorage.setItem("chatHistory", updatedHistory);
