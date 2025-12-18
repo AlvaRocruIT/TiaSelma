@@ -137,21 +137,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-3) TiaSelma/styles.css: easiest option
-To keep the same visual structure as vacante1/chatbot, simply copy:
-
-vacante1/chatbot/styles.css → TiaSelma/styles.css
-You don’t need to delete modal CSS; it won’t apply if there’s no modal in the HTML. The only important thing is: don’t set aria-hidden="true" on #chatApp, because that triggers this dimming rule:
-
-/workspace/vacante1/chatbot/styles.css
-Lines 161-165
-.chat-app[aria-hidden="true"] {
-  opacity: 0.15;
-  pointer-events: none;
-  user-select: none;
-}
-Quick test checklist (GitHub Pages friendly)
-Open TiaSelma/index.html
-Send a message
-Test n8n test webhook by visiting TiaSelma/index.html?env=test
-If you want, tell me the folder name you prefer (TiaSelma/, tia-selma/, or root), and I’ll tailor the exact GitHub Pages URL and links accordingly.
