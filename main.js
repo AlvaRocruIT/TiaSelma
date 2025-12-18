@@ -73,7 +73,7 @@ function extractReply({ raw, data }) {
 async function sendMessage() {
   const input = inputBox.value.trim();
   if (!input) {
-    currentResponse.value = "¿Qué le sirvo primero? (Escriba algo arriba).";
+    currentResponse.value = "Ya pue... No sea tímido";
     return;
   }
  
@@ -81,7 +81,7 @@ async function sendMessage() {
   const sessionId = getOrCreateSessionId();
   const endpoint = getPreferredEndpoint();
  
-  currentResponse.value = "Pensando...";
+  currentResponse.value = "Aers...";
   if (sendBtn) sendBtn.disabled = true;
  
   try {
@@ -106,7 +106,7 @@ async function sendMessage() {
     localStorage.setItem("chatHistory", updatedHistory);
   } catch (err) {
     const msg = String(err?.message || err || "Error desconocido");
-    const fallback = `Hmm... algo no salió bien 🤔 (${msg})`;
+    const fallback = `Ahí si que me pilló 🤔 (${msg})`;
  
     const updatedHistory = `${previous}\n👤 Tú: ${input}\n👵🏻 Tía Selma: ${fallback}\n`;
     currentResponse.value = fallback;
