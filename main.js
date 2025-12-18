@@ -6,10 +6,8 @@ const sendBtn = document.getElementById("sendBtn");
 const toggleHistoryBtn = document.getElementById("toggleHistoryBtn");
  
 // n8n endpoints (same IDs you already use)
-const PROD_BASE =
-  "https://alvarovargas.app.n8n.cloud/webhook/ac234336-390d-438a-aad6-284a5290743d/chat";
-const TEST_BASE =
-  "https://alvarovargas.app.n8n.cloud/webhook-test/ac234336-390d-438a-aad6-284a5290743d/chat";
+const PROD_URL = "https://alvarovargas.app.n8n.cloud/webhook/TiaSelma";
+const TEST_URL = "https://alvarovargas.app.n8n.cloud/webhook-test/TiaSelma";
  
 function getPreferredEndpoint() {
   const params = new URLSearchParams(window.location.search);
