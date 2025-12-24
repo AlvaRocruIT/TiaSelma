@@ -13,21 +13,16 @@ function getPreferredEndpoint() {
   const params = new URLSearchParams(window.location.search);
   const env = (params.get("env") || params.get("mode") || "").toLowerCase();
   const base = env === "test" ? TEST_URL : PROD_URL;
-
-  const url = new URL(base);
-  url.searchParams.set("action", "sendMessage");
-  return url.toString();
-}
-
+ 
   if (!base) throw new Error("Endpoint base no definido");
-
+ 
   let url;
   try {
     url = new URL(base);
   } catch {
     throw new Error(`Endpoint inválido: ${base}`);
   }
-
+ 
   url.searchParams.set("action", "sendMessage");
   return url.toString();
 }
