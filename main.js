@@ -12,7 +12,12 @@ const TEST_URL = "https://alvarovargas.app.n8n.cloud/webhook-test/TiaSelma";
 function getPreferredEndpoint() {
   const params = new URLSearchParams(window.location.search);
   const env = (params.get("env") || params.get("mode") || "").toLowerCase();
-  const base = env === "test" ? TEST_BASE : PROD_BASE;
+  const base = env === "test" ? TEST_URL : PROD_URL;
+
+  const url = new URL(base);
+  url.searchParams.set("action", "sendMessage");
+  return url.toString();
+}
 
   if (!base) throw new Error("Endpoint base no definido");
 
