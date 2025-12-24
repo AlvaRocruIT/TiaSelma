@@ -8,6 +8,21 @@ const toggleHistoryBtn = document.getElementById("toggleHistoryBtn");
 // n8n endpoints (same IDs you already use)
 const PROD_URL = "https://alvarovargas.app.n8n.cloud/webhook/TiaSelma";
 const TEST_URL = "https://alvarovargas.app.n8n.cloud/webhook-test/TiaSelma";
+
+const SESSION_ID_KEY = "tiaSelmaSessionId";
+ 
+const sessionId = (() => {
+  const existing = localStorage.getItem(SESSION_ID_KEY);
+  if (existing) return existing;
+ 
+  const fresh =
+    (typeof crypto !== "undefined" && crypto.randomUUID)
+      ? crypto.randomUUID()
+      : `sess_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+ 
+  localStorage.setItem(SESSION_ID_KEY, fresh);
+  return fresh;
+})();
  
 function getPreferredEndpoint() {
   const params = new URLSearchParams(window.location.search);
