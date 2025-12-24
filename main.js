@@ -143,7 +143,7 @@ async function sendMessage() {
     }
 
     currentResponse.value = reply;
-    historyBox.value = updatedHistory;
+    if (historyBox) historyBox.value = localStorage.getItem("chatHistory") || "";
     localStorage.setItem("chatHistory", updatedHistory);
   } catch (err) {
     const msg = String(err?.message || "Error desconocido");
