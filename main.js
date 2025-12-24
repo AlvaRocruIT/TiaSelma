@@ -67,7 +67,6 @@ async function sendMessage() {
   }
  
   const previous = localStorage.getItem("chatHistory") || "";
-  const sessionId = getOrCreateSessionId();
   const endpoint = getPreferredEndpoint();
  
   currentResponse.value = "Aers...";
